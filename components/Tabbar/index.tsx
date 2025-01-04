@@ -3,7 +3,7 @@ import { Text, PlatformPressable } from "@react-navigation/elements";
 import { AntDesign } from "@expo/vector-icons";
 
 const MyTabBar = ({ state, descriptors, navigation }: any) => {
-   const primaryColor = "#C62300";
+   const primaryColor = "#272D33";
    const greyColor = "#686D76";
 
    const icons = {
@@ -16,10 +16,13 @@ const MyTabBar = ({ state, descriptors, navigation }: any) => {
       settings: (props: any) => (
          <AntDesign name="setting" size={26} color={greyColor} {...props} />
       ),
+      analytics: (props: any) => (
+         <AntDesign name="linechart" size={26} color={greyColor} {...props} />
+      ),
    };
 
    return (
-      <View className="absolute bottom-8 bg-white shadow-lg shadow-current flex flex-row items-center justify-between mx-20 py-4 rounded-full">
+      <View className="absolute bottom-8 bg-white shadow-lg shadow-current flex flex-row items-center justify-between mx-10 py-4 rounded-3xl">
          {state.routes.map((route: any, index: number) => {
             const { options } = descriptors[route.key];
             const label =
@@ -63,9 +66,12 @@ const MyTabBar = ({ state, descriptors, navigation }: any) => {
                   {icons[route.name]({
                      color: isFocused ? primaryColor : greyColor,
                   })}
-                  <Text style={{ color: isFocused ? primaryColor : greyColor, fontSize: 10 }}>
-                     {label}
-                  </Text>
+                  <View
+                     className={`${
+                        isFocused &&
+                        "border-b-4 border-b-[#272D33] rounded-md p-1"
+                     }`}
+                  ></View>
                </TouchableOpacity>
             );
          })}
