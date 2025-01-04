@@ -1,6 +1,6 @@
-import { Touchable, TouchableOpacity, View } from "react-native";
-import { Text, PlatformPressable } from "@react-navigation/elements";
+import { TouchableOpacity, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 const MyTabBar = ({ state, descriptors, navigation }: any) => {
    const primaryColor = "#272D33";
@@ -16,8 +16,13 @@ const MyTabBar = ({ state, descriptors, navigation }: any) => {
       settings: (props: any) => (
          <AntDesign name="setting" size={26} color={greyColor} {...props} />
       ),
-      analytics: (props: any) => (
-         <AntDesign name="linechart" size={26} color={greyColor} {...props} />
+      rewards: (props: any) => (
+         <MaterialCommunityIcons
+            name="medal-outline"
+            size={26}
+            color={greyColor}
+            {...props}
+         />
       ),
    };
 

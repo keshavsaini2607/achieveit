@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function RootLayout() {
    const router = useRouter();
    useEffect(() => {
-      router.replace("/(dashboard)");
+      router.replace("/(onboarding)");
    }, []);
    return (
       <GluestackUIProvider mode="light">

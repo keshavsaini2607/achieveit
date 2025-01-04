@@ -1,10 +1,4 @@
-import {
-   View,
-   Text,
-   Image,
-   Dimensions,
-   TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
 import React from "react";
 import { ImageSliderType } from "@/assets/data/sliderData";
 import { LinearGradient } from "expo-linear-gradient";
@@ -15,6 +9,7 @@ import Animated, {
    useAnimatedStyle,
 } from "react-native-reanimated";
 import { useRouter } from "expo-router";
+import PrimaryButton from "../PrimaryButton";
 
 const SliderItem = ({
    item,
@@ -72,22 +67,10 @@ const SliderItem = ({
                   {item.description}
                </Text>
                {index && index === 2 && (
-                  <LinearGradient
-                     colors={["#F14A00", "#C62300"]}
-                     className="rounded-xl mt-4 p-4"
-                  >
-                     <TouchableOpacity
-                        style={{
-                           alignItems: "center",
-                           justifyContent: "center",
-                        }}
-                        onPress={() => router.push("(dashboard)")}
-                     >
-                        <Text className="text-center text-white">
-                           Get Started
-                        </Text>
-                     </TouchableOpacity>
-                  </LinearGradient>
+                  <PrimaryButton
+                     title="Get Started"
+                     btnAction={() => router.push("(dashboard)")}
+                  />
                )}
             </View>
          </LinearGradient>
