@@ -1,4 +1,10 @@
-import { View, Text, Image, Dimensions } from "react-native";
+import {
+   View,
+   Text,
+   Image,
+   Dimensions,
+   TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { ImageSliderType } from "@/assets/data/sliderData";
 import { LinearGradient } from "expo-linear-gradient";
@@ -8,6 +14,7 @@ import Animated, {
    SharedValue,
    useAnimatedStyle,
 } from "react-native-reanimated";
+import { useRouter } from "expo-router";
 
 const SliderItem = ({
    item,
@@ -18,6 +25,7 @@ const SliderItem = ({
    index: number;
    scrollX: SharedValue<number>;
 }) => {
+   const router = useRouter();
    const { width } = Dimensions.get("screen");
    const rAnimatedStyle = useAnimatedStyle(() => {
       return {
@@ -66,9 +74,19 @@ const SliderItem = ({
                {index && index === 2 && (
                   <LinearGradient
                      colors={["#F14A00", "#C62300"]}
-                     className="rounded-xl mt-4 p-4 flex items-center justify-center"
+                     className="rounded-xl mt-4 p-4"
                   >
-                     <Text className="text-center text-white">Get Started</Text>
+                     <TouchableOpacity
+                        style={{
+                           alignItems: "center",
+                           justifyContent: "center",
+                        }}
+                        onPress={() => router.push("(dashboard)")}
+                     >
+                        <Text className="text-center text-white">
+                           Get Started
+                        </Text>
+                     </TouchableOpacity>
                   </LinearGradient>
                )}
             </View>
